@@ -51,3 +51,9 @@ python rpcsync.py
 - You can modify the code to add more functionality or customize the user interface according to your preferences.
 
 That's it! You now have a basic guide on how to run RPCsync using the provided code. Have fun customizing your Discord presence!
+
+# Screenshots
+
+![](https://github.com/Xytrux/RPCsync/blob/main/RPCsync-window.png?raw=true)
+
+![](https://github.com/Xytrux/RPCsync/blob/main/RPCsync-full.png?raw=true)
