@@ -13,64 +13,34 @@ window.title("RPCsync")
 error_message_label = tk.Label(window, text="", fg="red")
 error_message_label.pack()
 
-client_id_label = tk.Label(window, text="Client ID:")
-client_id_label.pack()
-client_id_entry = tk.Entry(window)
-client_id_entry.pack()
+# Function to create a labeled entry field and pack it inline
+def create_labeled_entry(parent, label_text, entry_width):
+    frame = tk.Frame(parent)
+    frame.pack(side="top", pady=5)
 
-details_label = tk.Label(window, text="Details:")
-details_label.pack()
-details_entry = tk.Entry(window)
-details_entry.pack()
+    label = tk.Label(frame, text=label_text)
+    label.pack(side="left")
 
-state_label = tk.Label(window, text="State:")
-state_label.pack()
-state_entry = tk.Entry(window)
-state_entry.pack()
+    entry = tk.Entry(frame, width=entry_width)
+    entry.pack(side="left")
 
-large_image_label = tk.Label(window, text="Large Image:")
-large_image_label.pack()
-large_image_entry = tk.Entry(window)
-large_image_entry.pack()
+    return entry
 
-large_text_label = tk.Label(window, text="Large Image Text (optional):")
-large_text_label.pack()
-large_text_entry = tk.Entry(window)
-large_text_entry.pack()
-
-small_image_label = tk.Label(window, text="Small Image (optional):")
-small_image_label.pack()
-small_image_entry = tk.Entry(window)
-small_image_entry.pack()
-
-small_text_label = tk.Label(window, text="Small Image Text (optional):")
-small_text_label.pack()
-small_text_entry = tk.Entry(window)
-small_text_entry.pack()
-
-button1_label_label = tk.Label(window, text="Button 1 Label (optional):")
-button1_label_label.pack()
-button1_label_entry = tk.Entry(window)
-button1_label_entry.pack()
-
-button1_url_label = tk.Label(window, text="Button 1 URL (optional):")
-button1_url_label.pack()
-button1_url_entry = tk.Entry(window)
-button1_url_entry.pack()
-
-button2_label_label = tk.Label(window, text="Button 2 Label (optional):")
-button2_label_label.pack()
-button2_label_entry = tk.Entry(window)
-button2_label_entry.pack()
-
-button2_url_label = tk.Label(window, text="Button 2 URL (optional):")
-button2_url_label.pack()
-button2_url_entry = tk.Entry(window)
-button2_url_entry.pack()
-
+# Create labeled entry fields and pack them inline
+client_id_entry = create_labeled_entry(window, "Client ID:", 30)
+details_entry = create_labeled_entry(window, "Details:", 30)
+state_entry = create_labeled_entry(window, "State:", 30)
+large_image_entry = create_labeled_entry(window, "Large Image:", 30)
+large_text_entry = create_labeled_entry(window, "Large Image Text (optional):", 30)
+small_image_entry = create_labeled_entry(window, "Small Image (optional):", 30)
+small_text_entry = create_labeled_entry(window, "Small Image Text (optional):", 30)
+button1_label_entry = create_labeled_entry(window, "Button 1 Label (optional):", 30)
+button1_url_entry = create_labeled_entry(window, "Button 1 URL (optional):", 30)
+button2_label_entry = create_labeled_entry(window, "Button 2 Label (optional):", 30)
+button2_url_entry = create_labeled_entry(window, "Button 2 URL (optional):", 30)
 start_checkbutton_var = tk.IntVar()
 start_checkbutton = tk.Checkbutton(window, text="Enable Start", variable=start_checkbutton_var)
-start_checkbutton.pack()
+start_checkbutton.pack(side="top", pady=5)
 
 # Initialize the Discord RPC client
 discord_rpc = None
