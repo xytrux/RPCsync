@@ -2,6 +2,12 @@
 
 The world's most easy-to-use Discord RPC client
 
+# Screenshots
+
+![](https://github.com/Xytrux/RPCsync/blob/main/RPCsync-window.png?raw=true)
+
+![](https://github.com/Xytrux/RPCsync/blob/main/RPCsync-full.png?raw=true)
+
 # Guide
 
 This guide provides step-by-step instructions on how to run RPCsync using the provided code. There are 2 ways.
@@ -51,9 +57,3 @@ python rpcsync.py
 - You can modify the code to add more functionality or customize the user interface according to your preferences.
 
 That's it! You now have a basic guide on how to run RPCsync using the provided code. Have fun customizing your Discord presence!
-
-# Screenshots
-
-![](https://github.com/Xytrux/RPCsync/blob/main/RPCsync-window.png?raw=true)
-
-![](https://github.com/Xytrux/RPCsync/blob/main/RPCsync-full.png?raw=true)
