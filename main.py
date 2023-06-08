@@ -6,6 +6,9 @@ import time
 window = tk.Tk()
 window.title("RPCsync")
 
+# Set the app icon
+#window.iconbitmap("app_icon.ico")
+
 # Set up the UI components
 error_message_label = tk.Label(window, text="", fg="red")
 error_message_label.pack()
@@ -158,6 +161,25 @@ def clear_presence():
 
     # Clear the error message
     error_message_label.config(text="")
+
+# Ctrl+A shortcut handler
+def select_all(event):
+    event.widget.select_range(0, "end")
+    event.widget.icursor("end")
+    return "break"
+
+# Bind Ctrl+A shortcut to text entry fields
+client_id_entry.bind("<Control-a>", select_all)
+details_entry.bind("<Control-a>", select_all)
+state_entry.bind("<Control-a>", select_all)
+large_image_entry.bind("<Control-a>", select_all)
+large_text_entry.bind("<Control-a>", select_all)
+small_image_entry.bind("<Control-a>", select_all)
+small_text_entry.bind("<Control-a>", select_all)
+button1_label_entry.bind("<Control-a>", select_all)
+button1_url_entry.bind("<Control-a>", select_all)
+button2_label_entry.bind("<Control-a>", select_all)
+button2_url_entry.bind("<Control-a>", select_all)
 
 # Create an "Update" button
 update_button = tk.Button(window, text="Update", command=update_presence)
