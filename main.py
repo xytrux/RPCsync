@@ -39,7 +39,7 @@ button1_url_entry = create_labeled_entry(window, "Button 1 URL (optional):", 30)
 button2_label_entry = create_labeled_entry(window, "Button 2 Label (optional):", 30)
 button2_url_entry = create_labeled_entry(window, "Button 2 URL (optional):", 30)
 start_checkbutton_var = tk.IntVar()
-start_checkbutton = tk.Checkbutton(window, text="Enable Start", variable=start_checkbutton_var)
+start_checkbutton = tk.Checkbutton(window, text="Time Elapsed", variable=start_checkbutton_var)
 start_checkbutton.pack(side="top", pady=5)
 
 # Initialize the Discord RPC client
