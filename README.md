@@ -1,5 +1,9 @@
 # RPCsync
 
+The world's most easy-to-use Discord RPC client
+
+# Guide
+
 This guide provides step-by-step instructions on how to run the RPCsync using the provided code.
 
 ## Step 1: Install the required dependencies
