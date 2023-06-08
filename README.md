@@ -45,7 +45,7 @@ python rpcsync.py
 - To clear the presence, click the "Clear" button.
 - You can use the Ctrl+A shortcut to select all the text in an input field for easier editing.
 
-## Step 6: Customize and experiment
+## Step 5: Customize and experiment
 
 - Feel free to experiment with different input values and configurations to update your Discord RPC presence as desired.
 - You can modify the code to add more functionality or customize the user interface according to your preferences.
