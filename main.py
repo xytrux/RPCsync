@@ -1,13 +1,13 @@
 import tkinter as tk
+from tkinter import filedialog
+import os
+import json
 from pypresence import Presence
 import time
 
 # Create a Tkinter window
 window = tk.Tk()
 window.title("RPCsync")
-
-# Set the app icon
-#window.iconbitmap("app_icon.ico")
 
 # Set up the UI components
 error_message_label = tk.Label(window, text="", fg="red")
@@ -27,6 +27,7 @@ def create_labeled_entry(parent, label_text, entry_width):
     return entry
 
 # Create labeled entry fields and pack them inline
+rpc_name_entry = create_labeled_entry(window, "RPC Name:", 30)
 client_id_entry = create_labeled_entry(window, "Client ID:", 30)
 details_entry = create_labeled_entry(window, "Details:", 30)
 state_entry = create_labeled_entry(window, "State:", 30)
@@ -83,43 +84,26 @@ def update_presence():
     presence = {
         "details": details,
         "state": state,
-        "large_image": large_image
+        "large_image": large_image,
+        "large_text": large_text,
+        "small_image": small_image,
+        "small_text": small_text,
+        "buttons": []
     }
 
-    # Add large image text if provided
-    if large_text:
-        presence["large_text"] = large_text
-
-    # Add small image and small image text if provided
-    if small_image:
-        presence["small_image"] = small_image
-    if small_text:
-        presence["small_text"] = small_text
-
-    # Add buttons if label and URL are provided
-    buttons = []
+    # Add button 1 if label and URL are provided
     if button1_label and button1_url:
-        buttons.append({
-            "label": button1_label,
-            "url": button1_url
-        })
+        presence["buttons"].append({"label": button1_label, "url": button1_url})
+
+    # Add button 2 if label and URL are provided
     if button2_label and button2_url:
-        buttons.append({
-            "label": button2_label,
-            "url": button2_url
-        })
+        presence["buttons"].append({"label": button2_label, "url": button2_url})
 
-    if buttons:
-        presence["buttons"] = buttons
-
-    # Check if the start parameter should be included
-    if start_checkbutton_var.get():
+    # Check if the "Time Elapsed" option is checked
+    if start_checkbutton_var.get() == 1:
         presence["start"] = int(time.time())
 
-    try:
-        discord_rpc.update(**presence)
-    except Exception as e:
-        error_message_label.config(text=f"Error: {str(e)}")
+    discord_rpc.update(**presence)
 
 # Callback function to clear the Discord RPC presence
 def clear_presence():
@@ -151,6 +135,91 @@ button1_url_entry.bind("<Control-a>", select_all)
 button2_label_entry.bind("<Control-a>", select_all)
 button2_url_entry.bind("<Control-a>", select_all)
 
+# Callback function to save the RPC inputs to a JSON file
+def save_rpc():
+    rpc_name = rpc_name_entry.get()
+    client_id = client_id_entry.get()
+    details = details_entry.get()
+    state = state_entry.get()
+    large_image = large_image_entry.get()
+    large_text = large_text_entry.get()
+    small_image = small_image_entry.get()
+    small_text = small_text_entry.get()
+    button1_label = button1_label_entry.get()
+    button1_url = button1_url_entry.get()
+    button2_label = button2_label_entry.get()
+    button2_url = button2_url_entry.get()
+    start_checked = start_checkbutton_var.get()
+
+    if rpc_name == "":
+        error_message_label.config(text="Error: RPC Name is required")
+        return
+
+    rpc_data = {
+        "client_id": client_id,
+        "details": details,
+        "state": state,
+        "large_image": large_image,
+        "large_text": large_text,
+        "small_image": small_image,
+        "small_text": small_text,
+        "button1_label": button1_label,
+        "button1_url": button1_url,
+        "button2_label": button2_label,
+        "button2_url": button2_url,
+        "start_checked": start_checked
+    }
+
+    file_path = tk.filedialog.asksaveasfilename(
+        initialdir="Presences",
+        title="Save RPC File",
+        defaultextension=".json",
+        filetypes=(("JSON files", "*.json"),)
+    )
+
+    if file_path:
+        with open(file_path, "w") as file:
+            json.dump(rpc_data, file, indent=4)
+
+# Callback function to load the RPC inputs from a JSON file
+# Callback function to load the RPC inputs from a JSON file
+def load_rpc():
+    file_path = tk.filedialog.askopenfilename(
+        initialdir="Presences",
+        title="Load RPC File",
+        filetypes=(("JSON files", "*.json"),)
+    )
+
+    if file_path:
+        with open(file_path, "r") as file:
+            rpc_data = json.load(file)
+
+        rpc_name_entry.delete(0, "end")
+        rpc_name_entry.insert(0, os.path.splitext(os.path.basename(file_path))[0])
+        client_id_entry.delete(0, "end")
+        client_id_entry.insert(0, rpc_data.get("client_id", ""))
+        details_entry.delete(0, "end")
+        details_entry.insert(0, rpc_data.get("details", ""))
+        state_entry.delete(0, "end")
+        state_entry.insert(0, rpc_data.get("state", ""))
+        large_image_entry.delete(0, "end")
+        large_image_entry.insert(0, rpc_data.get("large_image", ""))
+        large_text_entry.delete(0, "end")
+        large_text_entry.insert(0, rpc_data.get("large_text", ""))
+        small_image_entry.delete(0, "end")
+        small_image_entry.insert(0, rpc_data.get("small_image", ""))
+        small_text_entry.delete(0, "end")
+        small_text_entry.insert(0, rpc_data.get("small_text", ""))
+        button1_label_entry.delete(0, "end")
+        button1_label_entry.insert(0, rpc_data.get("button1_label", ""))
+        button1_url_entry.delete(0, "end")
+        button1_url_entry.insert(0, rpc_data.get("button1_url", ""))
+        button2_label_entry.delete(0, "end")
+        button2_label_entry.insert(0, rpc_data.get("button2_label", ""))
+        button2_url_entry.delete(0, "end")
+        button2_url_entry.insert(0, rpc_data.get("button2_url", ""))
+        start_checkbutton_var.set(rpc_data.get("start_checked", 0))
+
 # Create an "Update" button
 update_button = tk.Button(window, text="Update", command=update_presence)
 update_button.pack()
@@ -158,6 +227,14 @@ update_button.pack()
 # Create a "Clear" button
 clear_button = tk.Button(window, text="Clear", command=clear_presence)
 clear_button.pack()
+
+# Create a "Save" button
+save_button = tk.Button(window, text="Save", command=save_rpc)
+save_button.pack()
+
+# Create a "Load" button
+load_button = tk.Button(window, text="Load", command=load_rpc)
+load_button.pack()
 
 # Run the Tkinter event loop
 window.mainloop()
