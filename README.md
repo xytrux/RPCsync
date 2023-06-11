@@ -2,6 +2,15 @@
 
 The world's most easy-to-use Discord RPC client
 
+(please drop a star if you enjoy it)
+
+# Features
+
+- Simple, easy-to-use interface
+- RPC saving
+- Button support
+- No advertisements (though I'd appreciate it if you mentioned your RPC was made with it)
+
 # Screenshots
 
 ![](https://github.com/Xytrux/RPCsync/blob/main/RPCsync-window.png?raw=true)
