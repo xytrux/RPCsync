@@ -4,9 +4,10 @@ from pypresence import Presence
 import json
 import time
 
-# Create a Tkinter window
+# Create a tkinter window
 window = tk.Tk()
 window.title("RPCsync")
+
 
 # Set up the UI components
 error_message_label = tk.Label(window, text="", fg="red")
@@ -146,6 +147,25 @@ def clear_inputs():
     button2_url_entry.delete(0, tk.END)
     start_checkbutton_var.set(0)
 
+# Ctrl+A shortcut handler
+def select_all(event):
+    event.widget.select_range(0, "end")
+    event.widget.icursor("end")
+    return "break"
+
+# Bind Ctrl+A shortcut to text entry fields
+client_id_entry.bind("<Control-a>", select_all)
+details_entry.bind("<Control-a>", select_all)
+state_entry.bind("<Control-a>", select_all)
+large_image_entry.bind("<Control-a>", select_all)
+large_text_entry.bind("<Control-a>", select_all)
+small_image_entry.bind("<Control-a>", select_all)
+small_text_entry.bind("<Control-a>", select_all)
+button1_label_entry.bind("<Control-a>", select_all)
+button1_url_entry.bind("<Control-a>", select_all)
+button2_label_entry.bind("<Control-a>", select_all)
+button2_url_entry.bind("<Control-a>", select_all)
+
 # Callback function to save the presence data to a JSON file
 def save_presence():
     data = {
@@ -221,5 +241,5 @@ save_button.pack(side="top", pady=5)
 load_button = tk.Button(window, text="Load Presence", command=load_presence)
 load_button.pack(side="top", pady=5)
 
-# Run the Tkinter event loop
+# Run the tkinter event loop
 window.mainloop()
