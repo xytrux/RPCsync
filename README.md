@@ -17,6 +17,24 @@ The world's most easy-to-use Discord RPC client
 
 ![](https://github.com/Xytrux/RPCsync/blob/main/RPCsync-full.png?raw=true)
 
+# Making your RPC
+
+In order to make your RPC, you must head to the [Discord Developer Portal](https://discord.com/developers/applications)
+
+Once you've made your way there, you want to hit "New Application" in the top right corner.
+
+Next, you wanna name your RPC (this will also be what displays in your status. Ex. Playing **Minecraft**)
+
+Once, thats done, you wanna look at the sidebar on the left and click "Rich Presence." Make sure you are on "Art Assets" in the dropdown.
+
+Scroll down and start adding your images!
+
+Once you have added your images, navigate to the OAuth page in the sidebar.
+
+Once there, copy the client ID.
+
+And then simply insert your assets and client ID into the client!
+
 # Guide
 
 This guide provides step-by-step instructions on how to run RPCsync using the provided code. There are 2 ways.
