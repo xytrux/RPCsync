@@ -40,7 +40,6 @@ And then simply insert your assets and client ID into the client!
 This guide provides step-by-step instructions on how to run RPCsync using the provided code. There are 2 ways.
 
 # Script
-## AS OF RIGHT NOW THE SCRIPT IS BROKEN, DO NOT USE.
 
 To simplify the process of running RPCsync, you can use the bash script!
 
