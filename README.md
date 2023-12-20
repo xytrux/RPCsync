@@ -43,10 +43,16 @@ This guide provides step-by-step instructions on how to run RPCsync using the pr
 
 To simplify the process of running RPCsync, you can use the bash script!
 
+## linux
 To run the script, open a terminal, navigate to the directory where the script is located, and execute the following command:
 ```
 bash run.sh
 ```
+
+## Windows
+To run the script, open the folder, and run `run.bat`
+
+
 The script will activate a virtual environment if specified (uncomment the appropriate line), install the required packages, and then run RPCsync.
 
 # Manually
