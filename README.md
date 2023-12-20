@@ -39,7 +39,7 @@ And then simply insert your assets and client ID into the client!
 
 This guide provides step-by-step instructions on how to run RPCsync using the provided code. There are 2 ways.
 
-# Script
+# Script/Executable
 
 To simplify the process of running RPCsync, you can use the bash script!
 
@@ -49,11 +49,16 @@ To run the script, open a terminal, navigate to the directory where the script i
 bash run.sh
 ```
 
-## Windows
-To run the script, open the folder, and run `run.bat`
-
-
 The script will activate a virtual environment if specified (uncomment the appropriate line), install the required packages, and then run RPCsync.
+
+## Windows (executable)
+To run the client, download the exe file [here](https://github.com/armature64/RPCsync/releases/download/v1/RPCsync.exe)
+
+Then, run the exe file.
+
+> [!IMPORTANT]  
+> There's a chance that your anti-virus will falsely mark this program as harmful. You may have to mark this program as an exception.
+
 
 # Manually
 
